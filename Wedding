@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f6f2;
+            font-family: "Georgia", "Times New Roman", serif;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .title {
+            font-size: 3rem;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+        }
+
+        .date {
+            font-size: 2.2rem;
+            margin: 8px 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .date {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">SAVE THE DATE</div>
+        <div class="date">07</div>
+        <div class="date">17</div>
+        <div class="date">27</div>
+    </div>
+</body>
+</html>
