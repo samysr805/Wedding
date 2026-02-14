@@ -3,64 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save the Date</title>
-
+    <title>Save the Date - July 17, 2027</title>
+    
+    <!-- Elegant serif fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --burgundy: #800020;
+            --navy: #000080;
+            --cream: #fdfaf6;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            height: 100vh;
+            background-color: var(--cream);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            background-color: #f8f6f2;
-            font-family: "Georgia", "Times New Roman", serif;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Playfair Display', serif;
             text-align: center;
-            color: #333;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .container {
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .title {
-            font-size: 3rem;
-            letter-spacing: 6px;
-            margin-bottom: 40px;
-        }
-
-        .date {
-            font-size: 2.2rem;
-            margin: 8px 0;
-        }
-
-        @keyframes fadeIn {
-            from {
+        /* Left-to-right reveal animation */
+        @keyframes revealLeftToRight {
+            from { 
+                clip-path: inset(0 100% 0 0);
                 opacity: 0;
-                transform: translateY(20px);
             }
-            to {
+            to { 
+                clip-path: inset(0 0 0 0);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        @media (max-width: 600px) {
-            .title {
-                font-size: 2rem;
-                letter-spacing: 4px;
+        /* Fade in for image */
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
             }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
 
-            .date {
-                font-size: 1.6rem;
+        /* Main heading - very italic, reveals left to right */
+        h1 {
+            color: var(--burgundy);
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            z-index: 2;
+            position: relative;
+            opacity: 0;
+            animation: revealLeftToRight 2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Date - reveals after heading */
+        h2 {
+            color: var(--navy);
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            margin-top: 0;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.1em;
+            z-index: 2;
+            position: relative;
+            opacity: 0;
+            animation: revealLeftToRight 2s ease-out forwards;
+            animation-delay: 2.5s;
+        }
+
+        /* Image container - fades in last */
+        .image-container {
+            max-width: 90%;
+            width: 500px;
+            z-index: 2;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 4.5s;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--navy) 100%);
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 12px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 12px solid var(--white);
+            display: block;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .image-container {
+                width: 100%;
+            }
+        }
+
+        /* Reduced motion accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            h1, h2, .image-container {
+                animation: none;
+                opacity: 1;
             }
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="title">SAVE THE DATE</div>
-        <div class="date">07.17.2027</div>
+
+    <!-- Main content with sequential reveal -->
+    <h1>Save the Date</h1>
+    <h2>07.17.2027</h2>
+    
+    <div class="image-container">
+        <!-- Replace with your image URL or use base64 -->
+        <!-- <img src="YOUR_IMAGE_URL_HERE" alt="Engagement photo"> -->
+        
+        <!-- Placeholder -->
+        <div class="image-placeholder">
+            Your photo will appear here
+        </div>
     </div>
+
 </body>
 </html>
